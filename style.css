@@ -51,7 +51,7 @@ main {
 
 .code-area {
   background: #FFFFFF;
-  background-image: url(/imagenes/dibujo_texto.png);
+  background-image: url("imagenes/dibujo_texto.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 55%;
