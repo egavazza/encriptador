@@ -6,7 +6,12 @@
 
 let input = document.querySelector(".input-area");
 let code = document.querySelector(".code-area");
+let botonCopiar = document.querySelector(".btn-copiar");
 
+//Función para quitar las acentuaciones a las letras, gracias @Andres Gerard//
+let borraAcentos = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+};
 
 function btnEncriptar () {
   let textoEncriptado = encriptarTexto (input.value);
@@ -18,17 +23,15 @@ function btnEncriptar () {
 
 function encriptarTexto (stringEncriptado) {
   let matrizCodigo = [["e","enter"], ["i","imes"], ["a","ai"], ["o","ober"], ["u","ufat"]];
-  stringEncriptado = stringEncriptado.toLowerCase ();
+  stringEncriptado = borraAcentos(stringEncriptado).toLowerCase ();
   for (let i = 0; i < matrizCodigo.length; i++) {
     if (stringEncriptado.includes (matrizCodigo[i][0])) {
       stringEncriptado = stringEncriptado.replaceAll (matrizCodigo[i][0], matrizCodigo[i][1]);
     }
   }
-  let botonCopiar = document.querySelector(".btn-copiar");
   botonCopiar.style.display = "block";
   return stringEncriptado;
 }
-
 
 function btnDesencriptar () {
   let textoEncriptado = desencriptarTexto (input.value);
@@ -46,35 +49,14 @@ function desencriptarTexto (stringDesencriptado) {
       stringDesencriptado = stringDesencriptado.replaceAll (matrizCodigo[i][1], matrizCodigo[i][0])
     }
   }
-  let botonCopiar = document.querySelector(".btn-copiar");
   botonCopiar.style.display = "block";
   return stringDesencriptado;
 }
-
 
 function copiar () {
   var copyText = document.querySelector(".code-area");
   copyText.select();
   copyText.setSelectionRange(0, 99999);
   navigator.clipboard.writeText(copyText.value)
-    // VALIDACIÓN PARA SABER QUE TODO SALIÓ BIEN
-    // .then(() => {
-    //   alert("Texto copiado");
-    // })
-    // .catch(() => {
-    //   alert("Ups... algo salió mal");
-    // });
+  copyText.value = "";
 }
-
-
-
-// let encriptar = document.querySelector (".");
-// let desencriptar = document.querySelector (".btn-desencriptar");
-
-// document.querySelector('.btn-encriptar').addEventListener('click',() => {
-//   div.classList.add('div_hide')
-// })
-
-// document.querySelector('.show').addEventListener('click',() => {
-//   div.classList.remove('div_hide')
-// })
