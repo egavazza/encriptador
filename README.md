@@ -1,6 +1,6 @@
 # # Desafio Encriptador / Desencriptador de textos
 
-El desafío consisitía en crear una aplicación que encripta textos para poder intercambiar mensajes secretos con otras personas que sepan el secreto de la encriptación utilizada.
+El desafío consistía en crear una aplicación que encripta textos para poder intercambiar mensajes secretos con otras personas que sepan el secreto de la encriptación utilizada.
 
 Las "llaves" de encriptación que se utilizaron son las siguientes:
 - La letra "e" es convertida para "enter"
